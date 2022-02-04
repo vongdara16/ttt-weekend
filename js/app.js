@@ -1,7 +1,16 @@
 /*-------------------------------- Constants --------------------------------*/
 // define 8 possible winning combos as an array of arrays (nested arrays)
   // each array will contain three indexes of the board that make a winner if they hold the same value
-
+  const winArray = [
+    [0,1,2],
+    [0,3,6],
+    [0,4,8],
+    [1,4,7],
+    [2,4,6],
+    [2,5,8],
+    [3,4,5],
+    [6,7,8],
+  ]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
