@@ -77,8 +77,7 @@
 
 	// 5.1) Obtain the index of the square that was clicked by:
 	  // 5.1.1) "Extracting" the index from an id assigned to the element in the HTML 
-		// Hint: Each id seems to correspond with an index in our board array. How could these be used if
-		// we cleaned them up a bit?
+		// Hint: Each id seems to correspond with an index in our board array. How could these be used if we cleaned them up a bit?
 
 	// 5.2) If the board has a value at the index, immediately return because that square is already taken.
 
