@@ -78,6 +78,7 @@ function init(){
 }
 
 function render(){
+  getWinner()
   // render func
   // console.log(boardArray, 'render func')
   //loop over the board array
@@ -121,13 +122,13 @@ function render(){
     // if winner is equal to T, render msg tie. 
     // otherwise, render congrats for winning. 
       // use another ternary inside template literal
-  getWinner()
 }
 // after completing this step, you should be able to manually change the values held in the board array in the init func and see the style of the corresponding square change on your page. 
 
 
 function handleClick(evt){
   let index = parseInt(evt.target.id.replace('sq', ''))
+
   if (squArr[index] !== null){
     return
   } else if (winner !== null) {
@@ -135,7 +136,7 @@ function handleClick(evt){
     return 
   } else {
     squArr[index] = turn
-    // console.log(squArr)
+    console.log(squArr)
     turn *= -1
   }
   render()
@@ -159,15 +160,31 @@ function getWinner(){
   winArray.forEach(function(combo){
     // console.log(combo)
     // console.log(combo[0])
-    if (Math.abs(squArr[combo[0]] + squArr[combo[1]] + squArr[combo[2]]) === 3){
-      winner = turn
+    let totalCheck = (squArr[combo[0]] + squArr[combo[1]] + squArr[combo[2]])
+    if (Math.abs(totalCheck) === 3){
+      console.log('this works')
+      winner = turn*-1
+      console.log(winner, 'winner')
+      console.log(turn, 'turn')
     }
+
+  })
+  let i = 0
+  squArr.forEach(function(nums){
+    if (nums === null){
+      i++
+      // console.log(i)
+    }
+    if (i === 0){
+      winner = 'T'
+    }
+    console.log('test', i)
   })
 }
 
 
     // combo.forEach(function(nums, idx){
-    //   // if (squArr[nums] === 1)
+    //  // if (squArr[nums] === 1)
     //   console.log(nums, idx)
     //   let sum = squArr[nums].reduce(function(total, curr){
     //     return total + curr
