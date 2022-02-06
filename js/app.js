@@ -24,6 +24,7 @@ let squArr, turn, winner
 const gameStat = document.querySelector('#message')
 const board = document.querySelectorAll('.square')
 const section = document.querySelector('.board')
+const btn = document.querySelector('#btn')
 
 // console.log(board)
 
@@ -31,6 +32,7 @@ const section = document.querySelector('.board')
 /*----------------------------- Event Listeners -----------------------------*/
 // app should wait for user to click a square
 section.addEventListener('click', handleClick)
+btn.addEventListener('click', resetGame)
   // call a handleClick function
     // handleClick will obtain the index of the square
       // by extracting the index from an id assigned to the element in the HTML
@@ -48,7 +50,7 @@ init()
 // call init function
 function init(){
   // init func. will init vars
-  squArr = [null, null, null, null, null, null, null, null, null,]
+  squArr = [null, null, null, null, null, null, null, null, null]
     //  init board array to 9 nulls
   // squArr.map(function(elem, idx){
     // console.log('i ', idx, 'elem ', elem)
@@ -72,13 +74,13 @@ function init(){
       // this reps that there is no winner or tie
       // the winner var will hold the player value (1 or -1)
       // winner will hold a 'T' for tie
+  btn.setAttribute('hidden', true)
   render ();
   // render those state vars to the page with render func
   // console.log(squArr, turn, winner)
 }
 
 function render(){
-  getWinner()
   // render func
   // console.log(boardArray, 'render func')
   //loop over the board array
@@ -108,8 +110,9 @@ function render(){
     }
     // style that square however you wish, dependant on the value contained in the current cell being iterated over (-1, 1, or null)
   })
+  // getWinner()
 
-  if (!winner){ // how i understand it, null means game is still in play. no winner is decided
+  if (winner === null){ // how i understand it, null means game is still in play. no winner is decided
     gameStat.innerHTML = `${turn === 1 ? 'its player X turn' : 'its player O turn'}`
     // console.log(`${turn === 1 ? 'its player X turn' : 'its player O turn'}`)
   } else {
@@ -136,9 +139,10 @@ function handleClick(evt){
     return 
   } else {
     squArr[index] = turn
-    console.log(squArr)
+    // console.log(squArr)
     turn *= -1
   }
+  getWinner()
   render()
   // console.log(index)
   // console.log(turn)
@@ -157,29 +161,36 @@ function handleClick(evt){
 
 function getWinner(){
   // console.log('test')
+  let tie = squArr.every(function(num){
+    return num !== null
+  })
+  console.log(tie, 'tie')
+
   winArray.forEach(function(combo){
     // console.log(combo)
     // console.log(combo[0])
-    let totalCheck = (squArr[combo[0]] + squArr[combo[1]] + squArr[combo[2]])
-    if (Math.abs(totalCheck) === 3){
+    let totalCheck = Math.abs(squArr[combo[0]] + squArr[combo[1]] + squArr[combo[2]])
+    if (totalCheck === 3){
       console.log('this works')
       winner = turn*-1
       console.log(winner, 'winner')
       console.log(turn, 'turn')
-    }
-
-  })
-  let i = 0
-  squArr.forEach(function(nums){
-    if (nums === null){
-      i++
-      // console.log(i)
-    }
-    if (i === 0){
+      btn.setAttribute('hidden', false)
+    } else if (totalCheck !== 3 && tie === true){
       winner = 'T'
+      btn.setAttribute('hidden', false)
     }
-    console.log('test', i)
+    // console.log(totalCheck)
   })
+
+  // let tie = squArr.reduce(function(sum, curr){
+  //   return sum + Math.abs(curr)
+  // }, 0)
+  // console.log(tie, 'this is tie value')
+}
+
+function resetGame(){
+  
 }
 
 
