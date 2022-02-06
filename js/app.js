@@ -161,11 +161,7 @@ function handleClick(evt){
 
 function getWinner(){
   // console.log('test')
-  let tie = squArr.every(function(num){
-    return num !== null
-  })
-  console.log(tie, 'tie')
-
+  
   winArray.forEach(function(combo){
     // console.log(combo)
     // console.log(combo[0])
@@ -176,13 +172,19 @@ function getWinner(){
       console.log(winner, 'winner')
       console.log(turn, 'turn')
       btn.setAttribute('hidden', false)
-    } else if (totalCheck !== 3 && tie === true){
+      return;
+    } 
+    })
+    
+    console.log('outside foreach')
+    let tie = squArr.every(function(num){
+      return num !== null
+    })
+    console.log(tie, 'tie')
+    if (tie === true){
       winner = 'T'
-      btn.setAttribute('hidden', false)
     }
-    // console.log(totalCheck)
-  })
-
+    
   // let tie = squArr.reduce(function(sum, curr){
   //   return sum + Math.abs(curr)
   // }, 0)
@@ -190,7 +192,7 @@ function getWinner(){
 }
 
 function resetGame(){
-  
+
 }
 
 
