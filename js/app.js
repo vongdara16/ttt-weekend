@@ -24,7 +24,7 @@ let squArr, turn, winner
 const gameStat = document.querySelector('#message')
 const board = document.querySelectorAll('.square')
 const section = document.querySelector('.board')
-const btn = document.querySelector('#btn')
+const btn = document.querySelector('#reset-btn')
 
 // console.log(board)
 
@@ -32,7 +32,7 @@ const btn = document.querySelector('#btn')
 /*----------------------------- Event Listeners -----------------------------*/
 // app should wait for user to click a square
 section.addEventListener('click', handleClick)
-btn.addEventListener('click', resetGame)
+btn.addEventListener('click', init)
   // call a handleClick function
     // handleClick will obtain the index of the square
       // by extracting the index from an id assigned to the element in the HTML
@@ -74,7 +74,7 @@ function init(){
       // this reps that there is no winner or tie
       // the winner var will hold the player value (1 or -1)
       // winner will hold a 'T' for tie
-  btn.setAttribute('hidden', true)
+  // btn.setAttribute('hidden', true)
   render ();
   // render those state vars to the page with render func
   // console.log(squArr, turn, winner)
@@ -103,6 +103,7 @@ function render(){
       
     } else { // may not need this else. only used for null. 
       board[idx].style.backgroundColor = 'white'
+      board[idx].innerHTML = ''
       // console.log(board[idx])
       // const randSq = document.querySelector(`#sq${idx}`)
       // randSq.style.backgroundColor = 'white'
@@ -171,19 +172,20 @@ function getWinner(){
       winner = turn*-1
       console.log(winner, 'winner')
       console.log(turn, 'turn')
-      btn.setAttribute('hidden', false)
+      // btn.setAttribute('hidden', false)
       return;
     } 
-    })
-    
-    console.log('outside foreach')
-    let tie = squArr.every(function(num){
-      return num !== null
-    })
-    console.log(tie, 'tie')
-    if (tie === true){
-      winner = 'T'
-    }
+  })
+  
+  console.log('outside foreach')
+  let tie = squArr.every(function(num){
+    return num !== null
+  })
+  console.log(tie, 'tie')
+  if (tie === true && winner === null){
+    winner = 'T'
+    // btn.setAttribute('hidden', false)
+  }
     
   // let tie = squArr.reduce(function(sum, curr){
   //   return sum + Math.abs(curr)
@@ -191,9 +193,6 @@ function getWinner(){
   // console.log(tie, 'this is tie value')
 }
 
-function resetGame(){
-
-}
 
 
     // combo.forEach(function(nums, idx){
