@@ -42,16 +42,27 @@ function render(){
       board[idx].style.backgroundColor = 'red'
       board[idx].innerHTML = 'O'
     } else { 
-      board[idx].style.backgroundColor = 'white'
+      board[idx].style.backgroundColor = ''
       board[idx].innerHTML = ''
     }
   })
+  renderMsg()
+}
 
-  if (winner === null){ 
-    gameStat.innerHTML = `${turn === 1 ? 'its player X turn' : 'its player O turn'}`
+function renderMsg(){
+  let status = squArr.every(function(square){
+    return square === null
+  })
+  if (status === true && winner === null){
+    gameStat.innerHTML = 'Player 1 Start!'
+  } else if (status === false && winner === null){
+    gameStat.innerHTML = `${turn === 1 ? 'Turn: Player 1' : 'Turn: Player 2'}`
+  } else if (winner === 'T'){
+    gameStat.innerHTML = 'Tie Game! Play again!'
   } else {
-    gameStat.innerHTML = `${winner === 'T' ? 'its a TIE' : 'congrats you win ' + winner }`
+    gameStat.innerHTML = `${turn === 1 ? 'Player 2 wins!' : 'Player 1 wins!'}`
   }
+
 }
 
 function handleClick(evt){
@@ -65,6 +76,7 @@ function handleClick(evt){
     turn *= -1
   }
   getWinner()
+  getTie()
   render()
 }
 
@@ -78,11 +90,14 @@ function getWinner(){
     }
   })
 
-  let tie = squArr.every(function(num){
-    return num !== null
+}
+
+function getTie(){
+  let tie = squArr.every(function(square){
+    return square !== null
   })
-  console.log(tie, 'tie')
   if (tie === true && winner === null){
     winner = 'T'
   }
+  
 }

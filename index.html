@@ -6,26 +6,19 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Source+Serif+4&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/style.css">
 	<script defer src="./js/app.js"></script>
-	<title>Tic Tac Toe</title>
+	<title>TIC TAC TOE</title>
 </head>
 <body>
-	<h1 class="animate__animated animate__fadeIn">Tic-Tac-Toe</h1>
+	<h1 class="animate__animated animate__fadeIn">TIC-TAC-TOE</h1>
+
+	
 	<h2 class="animate__animated animate__fadeIn" id="message">Message</h2>
-	<h3>||</h3>
-	<div id="user-input">
-			<input id="player-one" type="text" placeholder="input name" >
-			<input id="player-two" type="text" placeholder="input name">
-	</div>
-
-	<div id="buttons">
-		<button id="play" class="btn btn-success">PLAY</button>
-		<!-- <button>||</button> -->
-		<button id="reset-btn" type="reset" class="btn btn-danger">RESET</button>
-	</div>
-
-	<section class="board">
+	<section class="board animate__animated animate__fadeIn">
 		<div class="square" id="sq0"></div>
 		<div class="square" id="sq1"></div>
 		<div class="square" id="sq2"></div>
@@ -36,6 +29,8 @@
 		<div class="square" id="sq7"></div>
 		<div class="square" id="sq8"></div>
 	</section>
+
+	<button id="reset-btn" type="reset" class="btn btn-danger animate__animated animate__fadeIn">RESET</button>
 	
 </body>
 </html>
