@@ -22,10 +22,12 @@ h1 {
   font-family: 'Source Serif 4', sans-serif;
   background-color: rgba(200,200,200,0.4);
   position: absolute;
-  top: 20%;
+  top: 22%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
+  padding: 0px 10px;
+  font-size: 56px;
   /* font-size: 56px; */
   /* margin: 0 auto; */
 }
