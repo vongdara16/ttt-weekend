@@ -8,32 +8,45 @@ body {
   /* display: flex; */
   /* flex-direction: column; */
   background-image: url(https://wallpaperaccess.com/full/17520.jpg);
-  position: absolute;
-  top: 40%;
+  
+  /* position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-
+  transform: translate(-50%, -50%); */
   text-align: center;
 }
 
 h1 {
   color: snow;
   border: 10px solid white;
-  font-family: 'Poiret One', cursive;
   font-family: 'Source Serif 4', sans-serif;
-  background-color: rgba(200,200,200,0.3);
-  /* padding: 10px 20px; */
+  background-color: rgba(200,200,200,0.4);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  /* font-size: 56px; */
+  /* margin: 0 auto; */
 }
 
 h2 {
   color: snow;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-section.board {
+section#board {
   display: grid;
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 div.square {
@@ -41,14 +54,19 @@ div.square {
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
-  background-color: rgba(230,230,230, 0.6);
+  background-color: rgba(230,230,230, 0.5);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Rowdies', cursive;
 }
 
 button {
-  margin: 10px;
+  /* margin: 10px; */
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
